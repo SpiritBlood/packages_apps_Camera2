@@ -247,8 +247,10 @@ public class PhotoMenu extends PieController
                 CameraSettings.KEY_JPEG_QUALITY,
                 CameraSettings.KEY_AUTOEXPOSURE,
                 CameraSettings.KEY_ANTIBANDING,
+                CameraSettings.KEY_DENOISE,
                 CameraSettings.KEY_BURST_MODE,
-                CameraSettings.KEY_HISTOGRAM
+                CameraSettings.KEY_HISTOGRAM,
+                CameraSettings.KEY_SUPERZOOM
         };
         item = makeItem(R.drawable.ic_settings_holo_light);
         item.setLabel(res.getString(R.string.camera_menu_more_label).toUpperCase(locale));
@@ -314,20 +316,20 @@ public class PhotoMenu extends PieController
         if (notSame(pref, CameraSettings.KEY_CAMERA_HDR, mSettingOff)) {
             setPreference(CameraSettings.KEY_SCENE_MODE, Parameters.SCENE_MODE_AUTO);
             setPreference(CameraSettings.KEY_BEAUTY_MODE, mSettingOff);
-            setPreference(CameraSettings.KEY_SLOW_SHUTTER, "slow-shutter-off");
+            setPreference(CameraSettings.KEY_SLOW_SHUTTER, "0");
             setPreference(CameraSettings.KEY_ASD, mSettingOff);
             disableBurstMode();
         } else if (notSame(pref, CameraSettings.KEY_SCENE_MODE, Parameters.SCENE_MODE_AUTO) ||
                    notSame(pref, CameraSettings.KEY_ASD, mSettingOff)) {
             setPreference(CameraSettings.KEY_CAMERA_HDR, mSettingOff);
-            setPreference(CameraSettings.KEY_SLOW_SHUTTER, "slow-shutter-off");
+            setPreference(CameraSettings.KEY_SLOW_SHUTTER, "0");
             if (!notSame(pref, CameraSettings.KEY_ASD, mSettingOff)) {
                 setPreference(CameraSettings.KEY_ASD, mSettingOff);
             }
         } else if (notSame(pref, CameraSettings.KEY_BEAUTY_MODE, mSettingOff)) {
             setPreference(CameraSettings.KEY_CAMERA_HDR, mSettingOff);
-            setPreference(CameraSettings.KEY_SLOW_SHUTTER, "slow-shutter-off");
-        } else if (notSame(pref, CameraSettings.KEY_SLOW_SHUTTER, "slow-shutter-off")) {
+            setPreference(CameraSettings.KEY_SLOW_SHUTTER, "0");
+        } else if (notSame(pref, CameraSettings.KEY_SLOW_SHUTTER, "0")) {
             setPreference(CameraSettings.KEY_CAMERA_HDR, mSettingOff);
             setPreference(CameraSettings.KEY_SCENE_MODE, Parameters.SCENE_MODE_AUTO);
             setPreference(CameraSettings.KEY_ASD, mSettingOff);
